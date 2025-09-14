@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #C4FF61;
+            --bg-dark: #0A0A0A;
+            --bg-card: #1A1A1A;
+            --bg-section: #0F0F0F;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B3B3B3;
+            --text-muted: #666666;
+            --accent-gradient: linear-gradient(135deg, #C4FF61 0%, #A8E04A 100%);
+            --border-color: rgba(196, 255, 97, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background-color: var(--bg-dark);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: var(--text-primary) !important;
+            letter-spacing: 2px;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-secondary) !important;
+            font-weight: 500;
+            margin: 0 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            text-transform: capitalize;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: var(--accent-gradient);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Main Container */
+        .main-container {
+            padding-top: 2rem;
+        }
+
+        /* About Hero Section */
+        .about-hero {
+            padding: 4rem 0 6rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .about-subtitle {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-primary-custom {
+            background: var(--accent-gradient);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--bg-dark);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 1rem;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(196, 255, 97, 0.3);
+            color: var(--bg-dark);
+        }
+
+        .social-icons {
+            display: inline-flex;
+            gap: 1rem;
+            margin-left: 1rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-icon:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(196, 255, 97, 0.3);
+        }
+
+        /* Profile Image */
+        .profile-section {
+            position: relative;
+            display: flex;
+            justify-content: flex-start; /* geser ke kanan atau kiri sesuai kebutuhan */
+        }
+        
+        .profile-image-container {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            max-width: 350px;     /* batasi ukuran */
+            margin: 0 auto 10px;      /* biar nempel kanan */
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Capabilities Section */
+        .capabilities-section {
+            background: var(--bg-section);
+            padding: 6rem 0;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .capability-item {
+            background: var(--bg-card);
+            padding: 2rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .capability-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(196, 255, 97, 0.3);
+            background: var(--bg-dark);
+        }
+
+        .capability-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .capability-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .capability-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            padding: 6rem 0;
+        }
+
+        .experience-item {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(196, 255, 97, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            font-size: 1rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .experience-period {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: rgba(196, 255, 97, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-section);
+            padding: 6rem 0;
+        }
+
+        .contact-info {
+            margin-bottom: 3rem;
+        }
+
+        .contact-email {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .contact-description {
+            color: var(--text-secondary);
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-control {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            background: var(--bg-dark);
+            border-color: var(--primary-color);
+            color: var(--text-primary);
+            box-shadow: 0 0 0 0.2rem rgba(196, 255, 97, 0.25);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-muted);
+        }
+
+        .contact-social {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-social .social-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 80px; /* supaya ada ruang untuk garis kiri */
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 40px; /* pindahkan garis ke kiri */
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--border-color);
+            z-index: 1;
+        }
+        
+        .timeline-progress {
+            position: absolute;
+            left: 40px; /* sama dengan .timeline-line */
+            top: 0;
+            width: 3px;
+            background: var(--accent-gradient);
+            z-index: 2;
+            height: 0;
+            transition: height 0.5s ease;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .timeline-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Semua content di sebelah kanan garis */
+        .timeline-content {
+            margin-left: 80px; /* biar tidak nabrak garis */
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            border-color: rgba(196, 255, 97, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .timeline-badge {
+            position: absolute;
+            left: 16px; /* posisikan di tengah garis */
+            top: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-badge:hover {
+            background: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        .timeline-badge i {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        
+        .timeline-badge:hover i {
+            color: var(--bg-dark);
+        }
+        
+        /* Typography & list tetap sama */
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-institution {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline-achievements {
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline-achievements h5 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .achievement-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .achievement-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+        
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            background: rgba(196, 255, 97, 0.1);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(196, 255, 97, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+        }
+
+
+        /* Certificates Section */
+        .certificates-section {
+            background: var(--bg-section);
+            padding: 6rem 0;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .certificate-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(196, 255, 97, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .certificate-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(196, 255, 97, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .certificate-icon i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .certificate-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .certificate-title a {
+            color: var(--text-primary); /* misalnya putih */
+            text-decoration: none;
+        }
+        
+        .certificate-title a:visited,
+        .certificate-title a:active,
+        .certificate-title a:hover {
+            color: var(--text-primary); /* tetap putih */
+            text-decoration: none; /* hilangkan underline */
+        }
+
+        .certificate-provider {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        .certificate-skills .skill-tag {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-dark);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 2rem 0 3rem;
+                text-align: center;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .experience-period {
+                align-self: flex-start;
+            }
+
+            .timeline-line,
+            .timeline-progress {
+                left: 30px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 70px;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-badge,
+            .timeline-item:nth-child(even) .timeline-badge {
+                left: 5px;
+                right: auto;
+            }
+
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .capabilities-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .navbar-nav .nav-link {
+                margin: 0 0.5rem;
+            }
+
+            .social-icons {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .capabilities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Loading Animation */
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: loading 2s ease-out;
+            z-index: 9999;
+        }
+
+        @keyframes loading {
+            0% { transform: scaleX(0); }
+            50% { transform: scaleX(0.7); }
+            100% { transform: scaleX(1); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Bar -->
+    <div class="loading-bar"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">MUHAMMAD FATHI ATSIILAH</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars" style="color: var(--primary-color);"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- About Me Section -->
+        <section class="about-hero">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="slide-in-left">
+                            <h1 class="section-title">ABOUT ME</h1>
+                            <p class="about-subtitle">I am a front-end developer based in Jakarta. Has System Information background.</p>
+                            <div class="about-content">
+                                <p>I am dedicated and enthusiastic about achieving goals. I have experience managing projects with good communication skills, working effectively, and collaborating with teams. I participated in the Independent Study Program of Kampus Merdeka Batch 6 at RevoU, demonstrating my ability to adapt quickly to learning. I studied data analysis using BigQuery and Looker Studio, as well as software development. I am highly focused on developing my data skills and becoming a competent expert.</p>
+                            </div>
+                            <div class="d-flex align-items-center flex-wrap">
+                                <a href="https://drive.google.com/file/d/18hhznNET888qg7Ta8QE8TQWb7laYjP4W/view?usp=sharing" class="btn-primary-custom">Download CV</a>
+                                <div class="social-icons">
+                                    <a href="https://www.linkedin.com/in/fathtsil/" class="social-icon">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/fathtsiil" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="profile-section slide-in-right">
+                            <div class="profile-image-container">
+                                <img src="asset/Sil.jpg" alt="Fathi Atsiilah" class="profile-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Capabilities Section -->
+        <section class="capabilities-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2 class="section-title fade-in">MY CAPABILITIES</h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="about-content fade-in">I am always looking to add more skills. Latest additions focus on backend development. I'm also exploring new technologies and improving upon my existing skills. I've got a lot of experience with the typical tech stack.</p>
+                    </div>
+                </div>
+                
+                <div class="capabilities-grid">
+                    <div class="capability-item fade-in">
+                        <div class="capability-name">HTML</div>
+                    </div>
+                    <div class="capability-item fade-in">
+                        <div class="capability-name">CSS</div>
+                    </div>
+                    <div class="capability-item fade-in">
+                        <div class="capability-name">JavaScript</div>
+                    </div>
+                    <div class="capability-item fade-in">
+                        <div class="capability-name">Looker Studio</div>
+                    </div>
+                    <div class="capability-item fade-in">
+                        <div class="capability-name">Accessibility</div>
+                    </div>
+                    <div class="capability-item fade-in">
+                        <div class="capability-name">Figma</div>
+                    </div>
+                    <div class="capability-item fade-in">
+                        <div class="capability-name">Bootstrap</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+         <section class="timeline-section">
+            <div class="container">
+                <h2 class="section-title fade-in">Academic Timeline</h2>
+                
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-progress" id="timeline-progress"></div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-badge">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+
+                        <div class="timeline-content">
+                            <div class="timeline-date">2021 - 2025</div>
+                            <h3 class="timeline-title">Bachelor of System Information</h3>
+                            <div class="timeline-institution">University of Gunadarma</div>
+                            <p class="timeline-description">I study programming languages, take various courses or bootcamps on databases and information systems management. I specialize in data processing, as well as developing website page layouts (front-end) and product design in information technology innovation.</p>
+                            
+                            <div class="timeline-achievements">
+                                <h5>Key Achievements</h5>
+                                <ul class="achievement-list">
+                                    <li>Graduated with a GPA of 3.8/4.0</li>
+                                    <li>Serving as the faculty secretary staff for 4 consecutive semesters.</li>
+                                    <li>Active in various campus organizations, namely Head of the Business and Partnership Bureau and Chairperson of the Volleyball Student Organization.</li>
+                                    <li>Research published on the design and development of e-commerce websites.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="skills-tags">
+                                <span class="skill-tag">Front-End</span>
+                                <span class="skill-tag">Data Analysis</span>
+                                <span class="skill-tag">Project Management</span>
+                                <span class="skill-tag">Problem Solving</span>
+                                <span class="skill-tag">Team Leadership</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                            <div class="timeline-badge">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            
+                            <div class="timeline-content">
+                                <div class="timeline-date">May 27 - June 14, 2025</div>
+                                <h3 class="timeline-title">Creating Business Intelligence</h3>
+                                <div class="timeline-institution">Professional Certification Institution</div>
+                                <p class="timeline-description">In this case, determining relevant data objects, building Business Intelligence to process and present data in a structured manner, and preparing analytical reports containing findings, patterns, and recommendations as the basis for decision-making.</p>
+                            
+                                <div class="timeline-achievements">
+                                    <h5>Specialization Modules</h5>
+                                    <ul class="achievement-list">
+                                        <li>Defining Data Objects</li>
+                                        <li>Creating Business Intelligence</li>
+                                        <li>Compile Analysis Report</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="skills-tags">
+                                    <span class="skill-tag">Business Intelligence</span>
+                                    <span class="skill-tag">Processing Data</span>
+                                    <span class="skill-tag">Analysis report</span>
+                                    <span class="skill-tag">Analytic Thinking</span>
+                                    <span class="skill-tag">Looker Studio</span>
+                                    <span class="skill-tag">Google Colab</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-badge">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            
+                            <div class="timeline-content">
+                                <div class="timeline-date">Sep 23 - Sep 28, 2024</div>
+                                <h3 class="timeline-title">Data Preparation for Business Processes</h3>
+                                <div class="timeline-institution">Professional Certification Institution</div>
+                                <p class="timeline-description">In this case, determining relevant data objects, building Business Intelligence to process and present data in a structured manner, and preparing analytical reports containing findings, patterns, and recommendations as the basis for decision-making.</p>
+                            
+                                <div class="timeline-achievements">
+                                    <h5>Specialization Modules</h5>
+                                    <ul class="achievement-list">
+                                        <li>Identifying Data Requirements for Business Processes.</li>
+                                        <li>Collecting Data</li>
+                                        <li>Analysing Data</li>
+                                        <li>Validating Data</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="skills-tags">
+                                    <span class="skill-tag">Business Intelligence</span>
+                                    <span class="skill-tag">Processing Data</span>
+                                    <span class="skill-tag">Analysis report</span>
+                                    <span class="skill-tag">Analytic Thinking</span>
+                                    <span class="skill-tag">Looker Studio</span>
+                                    <span class="skill-tag">Google Colab</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-badge">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            
+                            <div class="timeline-content">
+                                <div class="timeline-date">Feb 18 - June 30, 2024</div>
+                                <h3 class="timeline-title">Data Analytics and Software Development with AI</h3>
+                                <div class="timeline-institution">RevoU Tech Academy</div>
+                                <p class="timeline-description">In this case, determining relevant data objects, building Business Intelligence to process and present data in a structured manner, and preparing analytical reports containing findings, patterns, and recommendations as the basis for decision-making.</p>
+                            
+                                <div class="timeline-achievements">
+                                    <h5>Specialization Modules</h5>
+                                    <ul class="achievement-list">
+                                        <li>Introduction to Data Analytics Fundamentals</li>
+                                        <li>Introduction to Data Processing in Data Analytics using AI</li>
+                                        <li>Data Processing with SQL</li>
+                                        <li>Data Visualization with Looker Studio</li>
+                                        <li>Software Development Fundamentals</li>
+                                        <li>Front-End Development with HTML, CSS, and JavaScript</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="skills-tags">
+                                    <span class="skill-tag">Data Analytics</span>
+                                    <span class="skill-tag">SQL</span>
+                                    <span class="skill-tag">Software Development</span>
+                                    <span class="skill-tag">AI</span>
+                                    <span class="skill-tag">Looker Studio</span>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>  
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section class="certificates-section">
+            <div class="container">
+            <h2 class="section-title fade-in">Certifications</h2>
+            
+            <div class="certificates-grid">
+                <div class="certificate-card fade-in">
+                    <div class="certificate-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h4 class="certificate-title">
+                        <a href="https://e-sert.gunadarma.ac.id/cert/4514/signed_73998ec6871de973dba6e0c30ad78c34.pdf.pdf" target="_blank">Creating Business Intelligence</a>
+                    </h4>
+                    <div class="certificate-provider">Professional Certification Institution</div>
+                    <div class="certificate-date">Jun 2025</div>
+                    <div class="certificate-skills">
+                        <span class="skill-tag">Looker Studio</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Google Collaborating</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card fade-in">
+                    <div class="certificate-icon">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <h4 class="certificate-title">
+                        <a href="https://e-sert.gunadarma.ac.id/cert/4073/bd2a085ebea99e9fdb6dccd7a0e2eb68.pdf" target="_blank">Data Preparation for Business Processes</a>
+                    </h4>
+                    <div class="certificate-provider">Professional Certification Institution</div>
+                    <div class="certificate-date">Sep 2024</div>
+                    <div class="certificate-skills">
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Looker Studio</span>
+                        <span class="skill-tag">Google Collaborating</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card fade-in">
+                    <div class="certificate-icon">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <h4 class="certificate-title">
+                        <a href="https://drive.google.com/file/d/1JWpS51TZXGq_nKCCbQ1Vl6yaTsy_pNL5/view" target="_blank">Data Analytics and Software Deployment with AI</a>
+                    </h4>
+                    <div class="certificate-provider">RevoU Tech Academy</div>
+                    <div class="certificate-date">June 2024</div>
+                    <div class="certificate-skills">
+                        <span class="skill-tag">Data Analytics</span>
+                        <span class="skill-tag">HTML, CSS dan JavaScript</span>
+                        <span class="skill-tag">Software Deployment</span>
+                    </div>
+                </div>
+
+                <div class="certificate-card fade-in">
+                    <div class="certificate-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h4 class="certificate-title">
+                        <a href="https://drive.google.com/file/d/1HbHjTQ7iiak1q4KBsmD7YOBExlnCqL_5/view" target="_blank">Introduction to Fullstack JavaScript</a>
+                    </h4>
+                    <div class="certificate-provider">Phincon Academy</div>
+                    <div class="certificate-date">Jun 2024</div>
+                    <div class="certificate-skills">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">CSS</span>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+        
+        <!-- My Experience Section -->
+        <section class="experience-section">
+            <div class="container">
+                <h2 class="section-title fade-in">MY EXPERIENCE</h2>
+                
+                <div class="experience-item fade-in">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Lecturer Secretariat</div>
+                            <div class="experience-company">Gunadarma University</div>
+                        </div>
+                        <div class="experience-period">August 2024 - Present</div>
+                    </div>
+                    <div class="experience-description">
+                        I manage lecturer attendance data, validate lecturer arrivals, and organize classrooms. I also handle the administration of lecturer assignments and ensure smooth communication between lecturers and students.
+                    </div>
+                </div>
+
+                <div class="experience-item fade-in">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Head of Business and Partnerships</div>
+                            <div class="experience-company">Student Executive Board of Faculty of Science and Technology</div>
+                        </div>
+                        <div class="experience-period">Des 2023 - Agust 2024</div>
+                    </div>
+                    <div class="experience-description">
+                        Responsible for staff performance, creating KPIs for 1 period, obtaining cooperation with 2 external partners and obtaining business funds of 7 million rupiah.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Let's Connect Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title fade-in">LET'S CONNECT</h2>
+                
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="contact-info fade-in">
+                            <a href="mailto:say.hellorobergarcia@gmail.com" class="contact-email">muhammadfathiatsiilah@gmail.com</a>
+                            <p class="contact-description">For more info, here's my resume</p>
+                            
+                            <div class="contact-social">
+                                <a href="https://www.linkedin.com/in/fathtsil/" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.instagram.com/fathtsiil" class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-8">
+                        <form class="contact-form fade-in">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Name</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Subject</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary-custom">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Muhammad Fathi Atsiilah. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.animationDelay = '0s';
+                        entry.target.classList.add('animate');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Timeline animation on scroll
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const timelineProgress = document.getElementById('timeline-progress');
+        
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    
+                    // Update progress bar
+                    const index = Array.from(timelineItems).indexOf(entry.target);
+                    const progress = ((index + 1) / timelineItems.length) * 100;
+                    timelineProgress.style.height = progress + '%';
+                }
+            });
+        }, { threshold: 0.3 });
+
+        timelineItems.forEach(item => {
+            timelineObserver.observe(item);
+        });
+
+        // Timeline badge interaction //
+        document.querySelectorAll('.timeline-badge').forEach((badge, index) => {
+            badge.addEventListener('click', function() {
+                // Scroll to corresponding timeline item
+                const timelineItem = this.closest('.timeline-item');
+                timelineItem.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Add temporary highlight effect
+                const content = timelineItem.querySelector('.timeline-content');
+                content.style.borderColor = 'var(--primary-color)';
+                content.style.boxShadow = '0 0 30px rgba(196, 255, 97, 0.3)';
+                
+                setTimeout(() => {
+                    content.style.borderColor = '';
+                    content.style.boxShadow = '';
+                }, 2000);
+            });
+        });
+
+        // Certificate cards hover effect
+        document.querySelectorAll('.certificate-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) rotateY(5deg)';
+                this.style.boxShadow = '0 25px 80px rgba(196, 255, 97, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-10px) rotateY(0deg)';
+                this.style.boxShadow = '0 20px 60px rgba(0, 0, 0, 0.3)';
+            });
+        });
+
+        // Skill tags interactive effect
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.animation = 'skillPulse 0.6s ease-in-out';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.animation = '';
+            });
+        });
+
+        // Add skill pulse animation
+        const skillStyle = document.createElement('style');
+        skillStyle.textContent = `
+            @keyframes skillPulse {
+                0% { transform: translateY(-2px) scale(1); }
+                50% { transform: translateY(-4px) scale(1.05); }
+                100% { transform: translateY(-2px) scale(1); }
+            }
+        `;
+        document.head.appendChild(skillStyle);
+
+        // Observe all elements with animation classes
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            // Show loading state
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+            
+            // Simulate form submission
+            setTimeout(() => {
+                submitBtn.textContent = 'Message Sent!';
+                submitBtn.style.background = '#4ECDC4';
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '';
+                    submitBtn.style.background = '';
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+
+        // Dynamic capability items animation
+        const capabilityItems = document.querySelectorAll('.capability-item');
+        capabilityItems.forEach((item, index) => {
+            item.addEventListener('mouseenter', function() {
+                this.style.animationDelay = '0s';
+                this.style.animation = 'pulse 0.6s ease-in-out';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.animation = '';
+            });
+        });
+
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: translateY(-5px) scale(1); }
+                50% { transform: translateY(-5px) scale(1.05); }
+                100% { transform: translateY(-5px) scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Navigation active state
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        
+        // Initialize animations on page load
+        window.addEventListener('load', function() {
+            // Remove loading bar
+            const loadingBar = document.querySelector('.loading-bar');
+            if (loadingBar) {
+                setTimeout(() => {
+                    loadingBar.remove();
+                }, 2000);
+            }
+
+            // Trigger initial animations
+            setTimeout(() => {
+                document.querySelectorAll('.slide-in-left, .slide-in-right').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateX(0)';
+                });
+            }, 500);
+        });
+
+        // Add stagger animation to capability items
+        const capItems = document.querySelectorAll('.capability-item');
+        capItems.forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Experience items hover effect
+        document.querySelectorAll('.experience-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.borderLeftWidth = '4px';
+                this.style.borderLeftColor = 'var(--primary-color)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.borderLeftWidth = '1px';
+                this.style.borderLeftColor = 'var(--border-color)';
+            });
+        });
+    </script>
+</body>
+</html>

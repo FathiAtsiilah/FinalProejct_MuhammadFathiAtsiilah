@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Fathi Atsiilah - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #64FFDA;
+            --bg-dark: #0A0A0A;
+            --bg-card: #1A1A1A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B3B3B3;
+            --accent-gradient: linear-gradient(135deg, #64FFDA 0%, #4ECDC4 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-primary) !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-secondary) !important;
+            font-weight: 500;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: var(--accent-gradient);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content .highlight {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn-primary-custom {
+            background: var(--accent-gradient);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--bg-dark);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+            color: var(--bg-dark);
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(100, 255, 218, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(100, 255, 218, 0.3);
+        }
+
+        /* Featured Projects */
+        .projects-section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .project-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-right: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background: var(--bg-card);
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-dark);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(100, 255, 218, 0.3);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .form-control {
+            background: var(--bg-dark);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            color: var(--text-primary);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .form-control:focus {
+            background: var(--bg-dark);
+            border-color: var(--primary-color);
+            color: var(--text-primary);
+            box-shadow: 0 0 0 0.2rem rgba(100, 255, 218, 0.25);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-card);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+
+            .project-content {
+                padding: 1.5rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        /* Floating Elements Animation */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">MUHAMMAD FATHI ATSIILAH</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content fade-in">
+                        <h1>HI, I AM <span class="highlight">FATHI</span></h1>
+                        <p class="hero-description">
+                            I'm a passionate website developer and data analyst based in Jakarta.
+                            I create beautiful and functional digital experiences that make a difference.
+                        </p>
+                        <a href="#projects" class="btn-primary-custom">View My Work</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center fade-in">
+                        <img src="asset/Sil.jpg" alt="Fathi" class="profile-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title fade-in">FEATURED PROJECTS</h2>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card fade-in">
+                        <img src="asset/dashboard_prodi.png" alt="Landing Page" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">Professional Landing Page</h3>
+                            <p class="project-description">A modern, responsive landing page design for a tech startup with smooth animations and optimized performance.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Bootstrap</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Node.js</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="https://github.com/FathiAtsiilah/Project-Akreditasi.git"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card fade-in">
+                        <img src="asset/Cookies1.jpg" alt="E-commerce" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">E-Commerce Product Page</h3>
+                            <p class="project-description">A fully functional cake product e-commerce page with shopping cart, payment integration, and product management.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">Bootstrap</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Laravel</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="https://github.com/AdrianNael/projekummicakecookies.git"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card fade-in">
+                        <img src="asset/analisis saham.png" alt="Analisis Saham" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">Analytics Dashboard</h3>
+                            <p class="project-description">A comprehensive analytics dashboard with data visualization, real-time updates, and interactive charts.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Bar Chart</span>
+                                <span class="tech-tag">Pie Chart</span>
+                                <span class="tech-tag">Line Chart</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://lookerstudio.google.com/reporting/212e64df-3fc7-40ae-abdf-238586434f3b/page/qQEOF" target="_blank"><i class="fas fa-external-link-alt"></i>Looker Studio</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card fade-in">
+                        <img src="asset/coffee shop.png" alt="E-commerce" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">Analysis Coffee Shop</h3>
+                            <p class="project-description">This page displays the coffee product data page. This data has been processed to become valid and displays visualization data.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">Looker Studio</span>
+                                <span class="tech-tag">Data Analysis</span>
+                                <span class="tech-tag">CSS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://capstone-project-analysis-coffee-shop-team18.vercel.app/"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title fade-in">ABOUT ME</h2>
+                    <div class="about-content fade-in">
+                        <p>I am a front-end developer based in Jakarta. I have a System Information background and have a passion for creating beautiful, functional websites and applications. I enjoy working with modern technologies and frameworks to bring creative ideas to life.</p>
+                        <p>When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, and taking charge of data management.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="about.html" class="btn-primary-custom">See More</a>
+                    </div>
+
+                    <div class="skills-grid">
+                        <div class="skill-item fade-in">
+                            <div class="skill-icon">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <h4>Web Developer</h4>
+                            <p>Front-End</p>
+                        </div>
+                        <div class="skill-item fade-in">
+                            <div class="skill-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <h4>CSS</h4>
+                            <p>Bootstrap, Tailwind</p>
+                        </div>
+                        <div class="skill-item fade-in">
+                            <div class="skill-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h4>Design</h4>
+                            <p>Figma, Looker Studio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title fade-in">LET'S CONNECT</h2>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <form class="contact-form fade-in">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Subject" required>
+                        <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn-primary-custom">Send Message</button>
+                        </div>
+                    </form>
+                    
+                    <div class="social-links fade-in">
+                        <a href="https://www.linkedin.com/in/fathtsil/" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/fathtsiil" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Muhammad Fathi Atsiilah. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar-custom');
+            if (window.scrollY > 100) {
+                navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.3s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation and feedback
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate sending (replace with actual form handling)
+            setTimeout(() => {
+                submitBtn.textContent = 'Message Sent!';
+                submitBtn.style.background = '#4ECDC4';
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = '';
+                    this.reset();
+                }, 2000);
+            }, 1000);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroElements = document.querySelectorAll('.floating-element');
+            
+            heroElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Typing effect for hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', function() {
+            const heroTitle = document.querySelector('.hero-content h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                setTimeout(() => {
+                    typeWriter(heroTitle, originalText, 80);
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>
