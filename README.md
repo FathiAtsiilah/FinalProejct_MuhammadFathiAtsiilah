@@ -82,29 +82,6 @@ A modern, responsive portfolio website showcasing my work as a front-end develop
 - **Lecturer Secretariat** at Gunadarma University (2024-Present)
 - **Head of Business and Partnerships** at Student Executive Board (2023-2024)
 
-## 🔧 Setup & Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/portfolio-website.git
-   ```
-
-2. Navigate to the project directory:
-   ```bash
-   cd portfolio-website
-   ```
-
-3. Open `portofolio.html` in your preferred web browser or serve using a local server:
-   ```bash
-   # Using Python
-   python -m http.server 8000
-   
-   # Using Node.js (http-server)
-   npx http-server
-   
-   # Using PHP
-   php -S localhost:8000
-   ```
 
 ## 📱 Browser Compatibility
 
