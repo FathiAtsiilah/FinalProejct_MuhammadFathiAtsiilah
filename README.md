@@ -22,7 +22,7 @@ A modern, responsive portfolio website showcasing my work as a front-end develop
 
 ## 📋 Pages Overview
 
-### Main Portfolio Page (`portofolio.html`)
+### Main Portfolio Page (`index.html`)
 - **Hero Section**: Introduction with profile image and call-to-action
 - **Featured Projects**: Showcase of key projects with live demos and GitHub links
 - **About Preview**: Brief introduction with skills overview
@@ -129,9 +129,9 @@ A modern, responsive portfolio website showcasing my work as a front-end develop
 - **LinkedIn**: [Your LinkedIn Profile]
 - **GitHub**: [Your GitHub Profile]
 
-## 📄 License
+## 📄 Link Project
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the (https://fathiatsiilah.github.io/FinalProject_MuhammadFathiAtsiilah/).
 
 ## 🤝 Contributing
 
@@ -143,14 +143,7 @@ While this is a personal portfolio, suggestions and feedback are welcome! Feel f
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📈 Future Enhancements
-
-- [ ] Add dark/light theme toggle
-- [ ] Implement blog section
-- [ ] Add more interactive animations
-- [ ] Integrate with CMS for easy content updates
-- [ ] Add multilingual support (English/Indonesian)
-- [ ] Implement advanced SEO optimization
+## 📈 Project Simulation
 
 ---
 
