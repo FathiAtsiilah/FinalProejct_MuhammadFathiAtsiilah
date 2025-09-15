@@ -121,7 +121,7 @@ While this is a personal portfolio, suggestions and feedback are welcome! Feel f
 5. Open a Pull Request
 
 ## 📈 Project Simulation
-
+https://github.com/user-attachments/assets/1beed5cd-d4c4-4ef1-9ba5-1f2dade07bfe
 ---
 
 **Note**: This portfolio showcases my journey as a front-end developer and data analyst. The design emphasizes modern web technologies while maintaining excellent user experience across all devices.
