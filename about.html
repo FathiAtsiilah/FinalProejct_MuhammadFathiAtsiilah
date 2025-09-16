@@ -803,7 +803,7 @@
     <div class="loading-bar"></div>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom">
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">MUHAMMAD FATHI ATSIILAH</a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -1154,7 +1154,11 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="contact-info fade-in">
-                            <a href="mailto:say.hellorobergarcia@gmail.com" class="contact-email">muhammadfathiatsiilah@gmail.com</a>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=muhammadfathiatsiilah@gmail.com&su=Collaboration%20Request&body=Hi%20Fathi,%0A%0AI%20would%20like%20to%20collaborate%20with%20you.%0A%0ARegards,"
+                              target="_blank" class="contact-email">muhammadfathiatsiilah@gmail.com
+                            </a>
+
+
                             <p class="contact-description">For more info, here's my resume</p>
                             
                             <div class="contact-social">
@@ -1172,35 +1176,35 @@
                     </div>
                     
                     <div class="col-lg-8">
-                        <form class="contact-form fade-in">
+                        <form class="contact-form fade-in" id="contactForm">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Name</label>
-                                        <input type="text" class="form-control" required>
+                                        <input type="text" id="name" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Email</label>
-                                        <input type="email" class="form-control" required>
+                                        <input type="email" id="email" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
-                            
+        
                             <div class="form-group">
                                 <label class="form-label">Subject</label>
-                                <input type="text" class="form-control" required>
+                                <input type="text" id="subject" class="form-control" required>
                             </div>
                             
                             <div class="form-group">
                                 <label class="form-label">Message</label>
-                                <textarea class="form-control" rows="5" required></textarea>
+                                <textarea id="message" class="form-control" rows="5" required></textarea>
                             </div>
-                            
-                            <button type="submit" class="btn-primary-custom">Submit</button>
+                            <button type="submit" class="btn-primary-custom">Send Message</button>
                         </form>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -1228,6 +1232,26 @@
                 }
             });
         });
+
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+        // ambil nilai input
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value;
+        
+        // ganti nomor WA dengan nomor tujuanmu (gunakan format internasional tanpa +)
+        const whatsappNumber = "6285624297127"; 
+        
+        // format pesan
+        const whatsappMessage = `Halo, saya *${name}* (${email}) ingin menghubungi Anda.%0A%0A*Subject:* ${subject}%0A*Message:* ${message}`;
+        
+        // redirect ke WhatsApp
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+        window.open(whatsappURL, "_blank");
+    });
 
         // Intersection Observer for animations
         const observerOptions = {
